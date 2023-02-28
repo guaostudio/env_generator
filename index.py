@@ -22,9 +22,11 @@ def env_exists():
   return file_exists
 
 def env_data():
-  arguments = sys.argv[1]
-
   try:
+    if len(sys.argv) == 1: raise ValueError('You must send a parameter with json format')
+
+    arguments = sys.argv[1]
+
     if is_json(arguments) == False: raise ValueError('Please verify that you sent the json correctly')
     if env_exists() == True: raise ValueError('.env file already exists')
 
