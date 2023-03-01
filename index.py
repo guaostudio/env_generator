@@ -1,6 +1,5 @@
 import sys
 import json
-from os.path import exists
 
 def is_json(myjson):
   try:
@@ -17,9 +16,6 @@ def env_file(data):
   except ValueError:
     return print('A problem occurred when creating the .env file')
 
-def env_exists():
-  file_exists = exists('.env')
-  return file_exists
 
 def env_data():
   try:
@@ -28,7 +24,6 @@ def env_data():
     arguments = sys.argv[1]
 
     if is_json(arguments) == False: raise ValueError('Please verify that you sent the json correctly')
-    if env_exists() == True: raise ValueError('.env file already exists')
 
     arr_env = json.loads(arguments)
     env_data = ""
